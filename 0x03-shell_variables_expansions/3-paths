@@ -1,2 +1,2 @@
 #!/bin/bash
-ls PATH | wc -l
+$PATH | sed s/:/\\n/g | wc -l
