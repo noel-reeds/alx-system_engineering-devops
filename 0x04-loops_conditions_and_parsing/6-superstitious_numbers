@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# displays numbers from 1 to 20 with conditions
+# displays numbers from 1 to 20 with diff. conditions
 var=1
 while [ "$var" -le 20 ]; do
 	echo "$var"
