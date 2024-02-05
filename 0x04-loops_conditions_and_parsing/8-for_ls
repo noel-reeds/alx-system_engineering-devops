@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # displays contents of a dir.
-for var in *; do
-	echo "$var"
+for var in $(find ./); do
+	filename=$(echo "$var" | cut -s --delimiter='-' -f 2)
+	echo "$filename"
 done
