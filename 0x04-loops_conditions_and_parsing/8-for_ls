@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# displays contents of a dir.
+for var in $(ls ./); do
+	echo "$var"
+done
