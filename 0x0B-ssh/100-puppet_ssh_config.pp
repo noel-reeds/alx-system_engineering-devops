@@ -1,9 +1,14 @@
 # configures SSH config file
-file { 'ssh_config':
+file { '/etc/ssh/ssh_config':
     ensure  => file,
-    path    => '/etc/ssh/ssh_config',
-    content => "
-        IdentityFile ~/.ssh/school
-        PasswordAuthentication no
-    ",
+    content => " ",
 }
+
+augeas { 'ssh_identity':
+    context => '/files/etc/ssh/ssh_config',
+    changes => [
+        "set IdentityFile[1] ~/.ssh/school",
+        "set PasswordAuthentication no",
+    ],
+}
+
