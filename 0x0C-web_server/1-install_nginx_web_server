@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# configures a new Ubuntu machine
+echo "Hello World" > /var/www/html/index.nginx-debian.html
