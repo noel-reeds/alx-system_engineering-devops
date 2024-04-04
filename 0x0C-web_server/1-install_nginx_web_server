@@ -6,5 +6,5 @@ if [ ! -x /usr/sbin/nginx ]; then
   echo 'Hello World' > /var/www/html/index.nginx-debian.html
   service nginx restart
 else
-  echo "Nginx already installed. Skipping installation..."
+  echo "Nginx already installed.."
 fi
