@@ -7,4 +7,5 @@ if [ ! -x /usr/sbin/nginx ]; then
   service nginx start
 else
   echo "Nginx already installed.."
+  echo "Hello World!" > /var/www/html/index.html
 fi
