@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # added a redirection..
-redirect_me="location /redirect_me {\nreturn 301"
+redirect_me="location /redirect_me {\n return 301; }"
 if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
@@ -8,7 +8,6 @@ if [ ! -x /usr/sbin/nginx ]; then
   sed -i "s|location /redirect_me {|$redirect_me" /etc/nginx/sites-enabled/default
   service nginx start
 else
-  echo "Nginx already installed.."
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
   sed -i "s|location /redirect_me {|$redirect_me" /etc/nginx/sites-enabled/default
 fi
