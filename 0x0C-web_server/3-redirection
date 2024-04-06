@@ -7,11 +7,11 @@ if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "s|location \/ {|$redirect_me\n\tlocation \/ {|" /etc/nginx/sites-enabled/default
+  sed -i "s|location \/ {|$redirect_me\n\tlocation \/ {|" /etc/nginx/sites-available/default
   service nginx start
 else
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "s|location \/ {|$redirect_me\n\tlocation \/ {|" /etc/nginx/sites-enabled/default
+  sed -i "s|location \/ {|$redirect_me\n\tlocation \/ {|" /etc/nginx/sites-available/default
   service nginx restart
 fi
 
