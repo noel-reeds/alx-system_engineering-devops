@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
-# handles redirection to a new page
-
-redirect_me="location \/redirect_me { return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4; }"
+# added a redirection..
 
 if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "s|location \/ {|$redirect_me\n\tlocation \/ {|" /etc/nginx/sites-available/default
+  sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
   service nginx start
 else
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "s|location \/ {|$redirect_me\n\tlocation \/ {|" /etc/nginx/sites-available/default
+  sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
   service nginx restart
 fi
-
