@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # added a redirection..
 
-redirect_me="location /redirect_me {\n\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
+redirect_me="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
 
 
 if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "s|location /re|$redirect_me" /etc/nginx/sites-available/default
+  sed -i "53i\\$redirect_me" /etc/nginx/sites-available/default
   service nginx start
 else
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
