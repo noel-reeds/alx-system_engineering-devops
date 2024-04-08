@@ -15,7 +15,7 @@ if [ ! -x /usr/sbin/nginx ]; then
   sed -i "54i\\$redirect_me" /etc/nginx/sites-available/default
   echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
   sed -i "58i\\$NotFoundErr" /etc/nginx/sites-available/default
-  sed -i 's|=404|/404.html|' /etc/nginx/sites-available/default
+  # sed -i 's|=404|/404.html|' /etc/nginx/sites-available/default
   sed -i "60i\\$LocationNotFound" /etc/nginx/sites-available/default
   service nginx start
 else
@@ -23,7 +23,7 @@ else
   sed -i "54i\\$redirect_me" /etc/nginx/sites-available/default
   echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
   sed -i "58i\\$NotFoundErr" /etc/nginx/sites-available/default
-  sed -i 's|=404|/404.html|' /etc/nginx/sites-available/default
+  # sed -i 's|=404|/404.html|' /etc/nginx/sites-available/default
   sed -i "60i\\$LocationNotFound" /etc/nginx/sites-available/default
   service nginx restart
 fi
