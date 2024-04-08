@@ -2,21 +2,28 @@
 # added a redirection..
 
 # a multiline variable config..
-redirect_me="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+redirect_me="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
 
-#404-NotFoundErr
-xyzfoo="\tlocation /xyzfoo {\n\t\treturn 404 \"Ceci n'est pas une page\n\";\n\t}"
+#custom NotFoundErr - 404
+NotFoundErr="\terror_page 404 /404.html;\n"
+LocationNotFound="\tlocation /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
 
 if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "53i\\$redirect_me" /etc/nginx/sites-available/default
-  sed -i "57i\\$xyzfoo" /etc/nginx/sites-available/default
+  sed -i "54i\\$redirect_me" /etc/nginx/sites-available/default
+  echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+  sed -i "58i\\$NotFoundErr" /etc/nginx/sites-available/default
+  sed -i 's|=404|/404.html|' /etc/nginx/sites-available/default
+  sed -i "60i\\$LocationNotFound" /etc/nginx/sites-available/default
   service nginx start
 else
   echo "Hello World!" > /var/www/html/index.nginx-debian.html
-  sed -i "53i\\$redirect_me" /etc/nginx/sites-available/default
-  sed -i "57i\\$xyzfoo" /etc/nginx/sites-available/default
+  sed -i "54i\\$redirect_me" /etc/nginx/sites-available/default
+  echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+  sed -i "58i\\$NotFoundErr" /etc/nginx/sites-available/default
+  sed -i 's|=404|/404.html|' /etc/nginx/sites-available/default
+  sed -i "60i\\$LocationNotFound" /etc/nginx/sites-available/default
   service nginx restart
 fi
