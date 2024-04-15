@@ -1,6 +1,5 @@
 ssh ubuntu@18.235.248.24
-sudo apt-get update
-sudo apt-get install ufw
-sudo ufw allow 'Nginx HTTP'
+sudo ufw enable
 sudo ufw allow 'ssh'
+sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
