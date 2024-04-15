@@ -1,0 +1,5 @@
+apt-get update
+apt-get install ufw
+ufw allow 'Nginx HTTP'
+ufw allow 'ssh'
+ufw allow 'Nginx HTTP SSL'
