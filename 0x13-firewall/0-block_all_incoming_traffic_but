@@ -1,3 +1,5 @@
+sudo ufw enable
 sudo ufw allow 'ssh'
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
+sudo service nginx restart
