@@ -1,4 +1,3 @@
-ssh ubuntu@18.235.248.24
 sudo ufw enable
 sudo ufw allow 'ssh'
 sudo ufw allow 'Nginx HTTP'
