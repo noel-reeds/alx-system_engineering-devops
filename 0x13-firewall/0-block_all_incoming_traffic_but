@@ -1,9 +1,6 @@
 #!/usr/bin/bash
 # installs ufw firewall..
-sudo apt-get update -y
-sudo apt-get install ufw -y
 sudo ufw enable -y
 sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw allow 443
-sudo service nginx restart
