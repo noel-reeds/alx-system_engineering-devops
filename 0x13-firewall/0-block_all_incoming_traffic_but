@@ -1,4 +1,8 @@
-sudo ufw enable
+#!/usr/bin/bash
+# installs ufw firewall..
+sudo apt-get update -y
+sudo apt-get install ufw -y
+sudo ufw enable -y
 sudo ufw allow 'ssh'
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
