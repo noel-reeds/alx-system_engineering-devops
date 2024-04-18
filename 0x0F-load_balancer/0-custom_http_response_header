@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# configures a new ubuntu machine.
+host="$HOSTNAME"
+if [ ! -x /usr/sbin/nginx ]; then
+  apt-get -y update
+  apt-get -y install nginx
+  curl -sH "X-Served-By: $host" > /dev/null
+  service nginx start
+else
+  echo "Nginx already installed.."
+  curl -sH "X-Served-By: $host" > /dev/null
+  service nginx restart 
+fi
