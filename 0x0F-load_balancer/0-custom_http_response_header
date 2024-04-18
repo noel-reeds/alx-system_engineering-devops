@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # configures a new ubuntu machine.
-host="$HOSTNAME"
+
+host="\tadd_header X-Served-By $HOSTNAME;\n"
 if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
-  curl -sH "X-Served-By: $host" > /dev/null
+  sed -i "48i\\$host" /etc/nginx/sites-available/default
   service nginx start
 else
-  echo "Nginx already installed.."
-  curl -sH "X-Served-By: $host" > /dev/null
+  sed -i "48i\\$host" /etc/nginx/sites-available/default
   service nginx restart 
 fi
