@@ -6,7 +6,7 @@ if [ ! -x /usr/sbin/nginx ]; then
   apt-get -y update
   apt-get -y install nginx
   sed -i "48i\\$host" /etc/nginx/sites-available/default
-  service nginx start
+  service nginx restart
 else
   sed -i "48i\\$host" /etc/nginx/sites-available/default
   service nginx restart 
