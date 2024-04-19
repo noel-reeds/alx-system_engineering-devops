@@ -6,10 +6,11 @@ backend="\nbackend active_servers\n\tbalance roundrobin\n\tserver 123004-web-01 
 if [ ! -x /usr/sbin/haproxy ]; then
   apt-get update -y
   apt-get install -y haproxy=2.0.\*
+  service haproxy start
   sed -i '34a\'"${header}" /etc/haproxy/haproxy.cfg
   sed -i '35a\'"$frontend" /etc/haproxy/haproxy.cfg
   sed -i "42i\\$backend" /etc/haproxy/haproxy.cfg
-  service haproxy start 
+  service haproxy restart 
 else
   sed -i '34a\'"${header}" /etc/haproxy/haproxy.cfg
   sed -i '35a\'"$frontend" /etc/haproxy/haproxy.cfg
