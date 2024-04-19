@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 # installs HAproxy
-
-apt-get install -y --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.8
-apt-get install -y haproxy=2.8.\*
+frontend="\nfrontend front_end\n\tbind *:80\n\tdefault_backend servers\n"
+backend="backend servers\n\tserver 123004-web-01 18.235.248.24:80 check\n\tserver 123004-web-02 100.25.150.242:80 check"
+if [ ! -x /usr/sbin/haproxy ]; then
+  apt-get install -y --no-install-recommends software-properties-common
+  add-apt-repository ppa:vbernat/haproxy-2.8
+  apt-get install -y haproxy=2.8.\*
+  sed -i "35i\\$frontend" /etc/haproxy/haproxy.cfg
+  sed -i "40i\\$backend" /etc/haproxy/haproxy.cfg
+else
+  sed -i "35i\\$frontend" /etc/haproxy/haproxy.cfg
+  sed -i "40i\\$backend" /etc/haproxy/haproxy.cfg
+fi
