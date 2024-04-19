@@ -3,14 +3,13 @@
 frontend="\nfrontend front_end\n\tbind *:80\n\tdefault_backend active_servers\n"
 backend="\nbackend active_servers\n\tbalance roundrobin\n\tserver 123004-web-01 18.235.248.24:80 check\n\tserver 123004-web-02 100.25.150.242:80 check"
 if [ ! -x /usr/sbin/haproxy ]; then
-  apt-get install -y --no-install-recommends software-properties-common
-  add-apt-repository ppa:vbernat/haproxy-2.8
-  apt-get install -y haproxy=2.8.\*
-  sed -i "35i\\$frontend" /etc/haproxy/haproxy.cfg
-  sed -i "40i\\$backend" /etc/haproxy/haproxy.cfg
-  service haproxy restart 
+  apt-get update -y
+  apt-get install haproxy=2.0.\*
+  sed -i '34a\'"${frontend}" /etc/haproxy/haproxy.cfg
+  sed -i "38i\\$backend" /etc/haproxy/haproxy.cfg
+  service haproxy start 
 else
-  sed -i "35i\\$frontend" /etc/haproxy/haproxy.cfg
-  sed -i "40i\\$backend" /etc/haproxy/haproxy.cfg
+  sed -i '34a\'"${frontend}" /etc/haproxy/haproxy.cfg
+  sed -i "39i\\$backend" /etc/haproxy/haproxy.cfg
   service haproxy restart
 fi
