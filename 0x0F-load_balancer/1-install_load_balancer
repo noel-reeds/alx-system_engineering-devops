@@ -4,16 +4,16 @@ header="\tno option http-use-htx\n"
 frontend="\nfrontend front_end\n\tbind *:80\n\tmode http\n\tdefault_backend active_servers\n"
 backend="\nbackend active_servers\n\tbalance roundrobin\n\tserver 123004-web-01 18.235.248.24:80 check\n\tserver 123004-web-02 100.25.150.242:80 check"
 if [ ! -x /usr/sbin/haproxy ]; then
-  sudo apt-get update -y
-  sudo apt-get install -y haproxy=2.0.\*
-  sudo service haproxy start
-  sudo sed -i '34a\'"${header}" /etc/haproxy/haproxy.cfg
-  sudo sed -i '35a\'"$frontend" /etc/haproxy/haproxy.cfg
-  sudo sed -i "42i\\$backend" /etc/haproxy/haproxy.cfg
-  sudo service haproxy restart 
+  apt-get update
+  apt-get install -y haproxy=2.0.\*
+  service haproxy start
+  sed -i '34a\'"${header}" /etc/haproxy/haproxy.cfg
+  sed -i '35a\'"$frontend" /etc/haproxy/haproxy.cfg
+  sed -i "41i\\$backend" /etc/haproxy/haproxy.cfg
+  service haproxy restart 
 else
-  sudo sed -i '34a\'"${header}" /etc/haproxy/haproxy.cfg
-  sudo sed -i '35a\'"$frontend" /etc/haproxy/haproxy.cfg
-  sudo sed -i "42i\\$backend" /etc/haproxy/haproxy.cfg
-  sudo service haproxy restart
+  sed -i '34a\'"${header}" /etc/haproxy/haproxy.cfg
+  sed -i '35a\'"$frontend" /etc/haproxy/haproxy.cfg
+  sed -i "41i\\$backend" /etc/haproxy/haproxy.cfg
+  service haproxy restart
 fi
