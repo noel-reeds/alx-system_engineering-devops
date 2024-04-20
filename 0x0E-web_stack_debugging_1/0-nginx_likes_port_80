@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # deugging an Ubuntu container
-apt-get update
-apt-get install -y nginx
+apt update
+apt install -y nginx
 service nginx start
