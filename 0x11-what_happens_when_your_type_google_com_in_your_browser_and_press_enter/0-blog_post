@@ -36,4 +36,17 @@ available servers, online and running servers, busy and idle servers, determines
 The load balancer then forwards the request to the appropriate server for handling.  
 
 5. THE WEB SERVER.  
-
+Finally!  
+The request gets to the web server. I know that was long!  
+The web request is then inspected by the web server, if the requested page is a static page, the page is retrieved from the web server  
+and sent returned to the web server. The information about the served web page are shared in a HTTP header, where details as ETags, Content-Type,  
+Content-Length, Status Code. Will discuss ETags in this post and how it enables efficiency in websites when a similar request arises.  
+A successful retrieved webpage is returned with a status code, 200, showing the request was successful. A request with a different status code  
+may require aunthentication or an error.  
+If the requested page is a dynamic request(requires some updated data, transactions..) the web server forwards requests to the  
+application server which handles logic requests. The application server determines the requested details, some if not most from the  
+database. The database is just but records in tables, thats it.  
+Once the application server retrieves the required records from the database, a response is sent back to the web server, the web server  
+attaches all the data in a web page and sends back to the web browser and the response gets displayed on the web broswer.  
+If anything goes wrong, can be an authentication required or requested webpage does not exist, the web server responds and sends back  
+an error which is then displayed on the browser.
