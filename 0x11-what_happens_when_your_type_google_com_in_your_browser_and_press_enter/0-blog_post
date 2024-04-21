@@ -1,0 +1,14 @@
+What Happens When a Client Enters WWW.GGOGLE.COM in a Browser:  
+1. THE DNS LOOK UP  
+The browser looks up the IP address matching the domain name, google.com, in the Domain Naming System(DNS).  
+The host file in sometimes /etc/hosts of the Operating System(OS) is checked first for an IP address matching   
+the request. If a record matches the request, an IP address is retrieved and a request for a corresponding webpage is sent. If no matching record is found, the Root Name Server(.com) is queried for a matching request and will respond with the location of the Top Level Domain(TLD) servers. The TLD then matches then the request with the help of the help of Authoritative Name Servers. After a complete lookup and a matching record is found, the record is cached in the hosts file for a future request and a for a webpage is sent to the severs hosting the corresponding website(www.google.com)  
+
+2. THE TCP/IP  
+How is the request sent to the web servers you may ask?  
+A protocol, an internet protocol(IP) or atimes referred to as a Transmission Communication Porotocol(TCP).  
+A protocol basically refers to means of doing something, a rule on how to do something.  
+There are various protocols(ssh, scp..), means, of sending a request to the web server, herein identified by the IP address maching the request.  
+
+3. FIREWALL.  
+
