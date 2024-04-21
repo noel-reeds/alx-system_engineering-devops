@@ -15,7 +15,25 @@ When a macthing record isn't found an error, 404 error is displayed on the brows
 How is the request sent to the web servers you may ask?  
 A protocol, an internet protocol(IP) or atimes referred to as a Transmission Communication Porotocol(TCP).  
 A protocol basically refers to means of doing something, a rule on how to do something.  
-There are various protocols(ssh, scp..), means, of sending a request to the web server, herein identified by the IP address maching the request.  
+There are various protocols(http, https, ssh, scp..), means, of sending a request to the web server, herein identified by the IP address maching the request.  
+Web requests are handled by http for unsecured requests and https for secured requests.
+Therefore a HyperText Protocol(HTTP) request, requesting for a web page is established and sent to the web server.
 
 3. FIREWALL.  
+Just like most premises, web servers are guarded from unauthorized access, this is achieved by a firewall.  
+Traffic(requests) is filtered.  
+When the request for a www.google.com(by now it's in form f an IP address) request is sent to a web server, the request first passes through  
+a firewall, the firewall dictates which requests get to the web server and which requests are denied access, depending  
+on the firewall configurations, the request is checked for the destination port.  
+A HTTP is usually mapped on port 80 on a service, web server.
+If the web server is configured to listen to port 80 and the port number matches those listed to access the web server,  
+the request is forwared to the web server.
+
+4. THE LOAD BALANCER.  
+In most cases, there are usually more than one web servers handling requests for a particular website. In such scenarios,  
+web servers sit behind a load balancer(i.e HAproxy..). The load balancer depending on the algorithm(instructions) set on it,  
+available servers, online and running servers, busy and idle servers, determines which web server handles a particular request.  
+The load balancer then forwards the request to the appropriate server for handling.  
+
+5. THE WEB SERVER.  
 
