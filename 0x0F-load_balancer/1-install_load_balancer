@@ -9,7 +9,7 @@ if [ ! -x /usr/sbin/haproxy ]; then
   apt-get install -y haproxy=2.8.\*
   sed -i "34a\\$frontend" /etc/haproxy/haproxy.cfg
   sed -i "39a\\$backend" /etc/haproxy/haproxy.cfg
-  service haproxy restart
+  service haproxy start
 else
   sed -i "34a\\$frontend" /etc/haproxy/haproxy.cfg
   sed -i "39a\\$backend" /etc/haproxy/haproxy.cfg
