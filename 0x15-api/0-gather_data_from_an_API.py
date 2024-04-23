@@ -4,19 +4,19 @@
 import requests
 import sys
 if __name__ == "__main__":
-    userId = int(sys.argv[1])
+    Id = int(sys.argv[1])
     todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
-    users = requests.get('https://jsonplaceholder.typicode.com/users').json()
-    done = 0
-    pending = 0
+    re = requests.get('https://jsonplaceholder.typicode.com/users').json()
+    d = 0
+    p = 0
     for todo in todos:
-        if todo.get('userId') == userId:
+        if todo.get('userId') == Id:
             if todo.get('completed') is True:
-                done += 1
+                d += 1
             else:
-                pending += 1
-    tasks = pending + done
-    print("Employee {} is done with tasks({}/{})".format(users[userId]['name'], done, tasks))
+                p += 1
+    t = p + d
+    print("Employee {} is done with tasks({}/{})".format(re[Id]['name'], d, t))
     for todo in todos:
-        if todo.get('userId') == userId and todo.get('completed') is True:
+        if todo.get('userId') == Id and todo.get('completed') is True:
             print("\t {}".format(todo.get('title')))
