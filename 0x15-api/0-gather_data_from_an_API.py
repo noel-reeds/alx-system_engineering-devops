@@ -18,7 +18,7 @@ if __name__ == "__main__":
     t = p + d
     for r in re:
         if r.get('id') == Id:
-            print("Employee {} is done with tasks({}/{})".format(r.get('name'), d, t))
+            print("Employee {} is done with tasks({}/{}):".format(r.get('name'), d, t))
     for todo in todos:
         if todo.get('userId') == Id and todo.get('completed') is True:
             print("\t {}".format(todo.get('title')))
