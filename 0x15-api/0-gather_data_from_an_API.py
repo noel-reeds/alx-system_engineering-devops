@@ -19,7 +19,7 @@ if __name__ == "__main__":
     for r in re:
         if r.get('id') == Id:
             f = f"Employee {format(r.get('name'))} is \
-            done with tasks({d}/{t}):"
+done with tasks({d}/{t}):"
             print(f)
     for todo in todos:
         if todo.get('userId') == Id and todo.get('completed') is True:
