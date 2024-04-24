@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""Exports API content into a JSON file"""
+"""Exports API content into a JSON file."""
 
-import csv
 import json
 import requests
 import sys
-if __name__ == "__main__":
+
+
+def main():
+    """main."""
     employee_id = int(sys.argv[1])
     todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
     users = requests.get('https://jsonplaceholder.typicode.com/users').json()
@@ -22,3 +24,7 @@ if __name__ == "__main__":
     user = {employee_id: tasks}
     with open("USER_ID.json", mode="w", encoding="utf-8") as myFile:
         json.dump(user, myFile)
+
+
+if __name__ == "__main__":
+    main()
