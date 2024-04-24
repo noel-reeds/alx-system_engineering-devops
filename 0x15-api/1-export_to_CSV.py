@@ -5,6 +5,7 @@ import csv
 import requests
 import sys
 if __name__ == "__main__":
+    """Exports API contents to CSV"""
     employee_id = int(sys.argv[1])
     todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
     users = requests.get('https://jsonplaceholder.typicode.com/users').json()
