@@ -5,9 +5,7 @@ import json
 import requests
 import sys
 
-
-def main():
-    """main."""
+if __name__ == "__main__":
     employee_id = int(sys.argv[1])
     todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
     users = requests.get('https://jsonplaceholder.typicode.com/users').json()
@@ -22,9 +20,6 @@ def main():
             task_d['username'] = user_dict.get(todo.get('userId'))
             tasks.append(task_d)
     user = {employee_id: tasks}
-    with open("USER_ID.json", mode="w", encoding="utf-8") as myFile:
+    filename = f"{employee_id}.json"
+    with open(filename, mode="w", encoding="utf-8") as myFile:
         json.dump(user, myFile)
-
-
-if __name__ == "__main__":
-    main()
