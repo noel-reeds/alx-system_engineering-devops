@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Retrieves data from an API"""
+"""Exports to CSV"""
 
 import csv
 import requests
