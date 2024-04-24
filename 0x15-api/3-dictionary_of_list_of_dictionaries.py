@@ -10,14 +10,15 @@ if __name__ == "__main__":
     tasks = []
     userss = {}
     for user in users:
-        for todo in todos:
-            task_d = {}
-            task_d['username'] = user.get('username')
-            task_d['task'] = todo.get('title')
-            task_d['completed'] = todo.get('completed')
-            tasks.append(task_d)
         userId = user.get('id')
+        for todo in todos:
+            if todo.get('userId') == userId:
+                task_d = {}
+                task_d['username'] = user.get('username')
+                task_d['task'] = todo.get('title')
+                task_d['completed'] = todo.get('completed')
+                tasks.append(task_d)
         userss[userId] = tasks
     filename = "todo_all_employees.json"
     with open(filename, mode="w", encoding="utf-8") as myFile:
-        json.dump(userss, myFile)
+        json.dump(userss, myFile, indent="\t")
