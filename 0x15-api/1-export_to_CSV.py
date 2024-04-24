@@ -15,8 +15,8 @@ if __name__ == "__main__":
             break
     for todo in todos:
         if todo.get('userId') == employee_id:
-                    row.append([employee_id,username,\
-todo.get('completed'),todo.get('title')])
+            row.append([employee_id, username,
+                        todo.get('completed'), todo.get('title')])
         filename = f"{employee_id}.csv"
         with open(filename, mode="w", encoding='utf-8') as file3:
             writer = csv.writer(file3, quoting=csv.QUOTE_ALL)
