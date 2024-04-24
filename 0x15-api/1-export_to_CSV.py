@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Exports API contents to CSV"""
+"""Exports API contents to CSV."""
 
 import csv
 import requests
