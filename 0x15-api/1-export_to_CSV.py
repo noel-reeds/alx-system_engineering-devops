@@ -19,7 +19,7 @@ if __name__ == "__main__":
                         myFile.write(output)
 with open("output.txt", "r") as myFile:
     stripped = (line.strip() for line in myFile)
-    splitted = (line.split(",") for line in myFile if line)
+    splitted = (line.split(",") for line in stripped if line)
     with open("USER_ID.csv", "w") as file3:
-        writer = csv.writer(file3)
+        writer = csv.writer(file3, quoting=csv.QUOTE_ALL)
         writer.writerows(splitted)
