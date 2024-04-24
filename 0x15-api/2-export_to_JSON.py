@@ -11,15 +11,15 @@ if __name__ == "__main__":
     users = requests.get('https://jsonplaceholder.typicode.com/users').json()
     tasks = []
     task_d = {}
-    for todo in todos:
-        if todo.get('userId') == employee_id:
-            for user in users:
-                if user.get('id') == employee_id:
+    for user in users:
+        if user.get('id') == employee_id:
+            for todo in todos:
+                if todo.get('userId') == employee_id:
+                    task_d = {}
                     task_d['title'] = todo.get('title')
                     task_d['completed'] = todo.get('completed')
                     task_d['username'] = user.get('username')
                     tasks.append(task_d)
-    user = {}
-    user[employee_id] = tasks
+    user = {employee_id: tasks}
     with open("USER_ID.json", mode="w", encoding="utf-8") as myFile:
         json.dump(user, myFile)
