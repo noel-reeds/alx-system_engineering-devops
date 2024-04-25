@@ -7,10 +7,10 @@ import requests
 if __name__ == "__main__":
     todos = requests.get('https://jsonplaceholder.typicode.com/todos').json()
     users = requests.get('https://jsonplaceholder.typicode.com/users').json()
-    tasks = []
     userss = {}
     for user in users:
         userId = user.get('id')
+        tasks = []
         for todo in todos:
             if todo.get('userId') == userId:
                 task_d = {}
