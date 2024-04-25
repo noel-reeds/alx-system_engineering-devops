@@ -21,4 +21,4 @@ if __name__ == "__main__":
         userss[userId] = tasks
     filename = "todo_all_employees.json"
     with open(filename, mode="w", encoding="utf-8") as myFile:
-        json.dump(userss, myFile, indent="\t")
+        json.dump(userss, myFile)
