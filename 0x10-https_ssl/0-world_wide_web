@@ -6,15 +6,15 @@ display () {
     then
       local subdomain="$2"
       local domain="${subdomain}.$1"
-      record=$(dig "$domain" +noall +answer | awk '{print $4}')
-      destination=$(dig "$domain" +noall +answer | awk '{ print $5 }')
+      record=$(dig "$domain" | grep -A1 'ANSWER SECTION:' | awk 'NR==2 { print $4 }')
+      destination=$(dig "$domain" | grep -A1 'ANSWER SECTION:' | awk 'NR==2 { print $5 }')
       echo "The subdomain $subdomain is a $record record and points to $destination"
   else
       local subdomains=('www' 'lb-01' 'web-01' 'web-02')
       for subdomain in "${subdomains[@]}"; do
         local domain2="${subdomain}.$1"
-        record2=$(dig "$domain2" +noall +answer | awk '{print $4}')
-        destination2=$(dig "$domain2" +noall +answer | awk '{ print $5 }')
+        record2=$(dig "$domain2" | grep -A1 'ANSWER SECTION:' | awk 'NR==2 { print $4 }')
+        destination2=$(dig "$domain2" | grep -A1 'ANSWER SECTION:' | awk 'NR==2 { print $5 }')
         echo "The subdomain $subdomain is a $record2 record and points to $destination2"
       done
   fi
