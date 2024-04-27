@@ -5,14 +5,14 @@ display () {
   if [ -n "$2" ]
     then
       local subdomain="$2"
-      local domain="${subdomain}.noel-reeds.tech"
+      local domain="${subdomain}.$1"
       record=$(dig "$domain" +noall +answer | awk '{print $4}')
       destination=$(dig "$domain" +noall +answer | awk '{ print $5 }')
       echo "The subdomain $subdomain is a $record record and points to $destination"
   else
       local subdomains=('www' 'lb-01' 'web-01' 'web-02')
       for subdomain in "${subdomains[@]}"; do
-        local domain2="${subdomain}.noel-reeds.tech"
+        local domain2="${subdomain}.$1"
         record2=$(dig "$domain2" +noall +answer | awk '{print $4}')
         destination2=$(dig "$domain2" +noall +answer | awk '{ print $5 }')
         echo "The subdomain $subdomain is a $record2 record and points to $destination2"
