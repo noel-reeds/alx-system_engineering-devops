@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# creates a mysql backup
+sudo mysqldump -u root -p"$1" --all-databases > backup.sql 
+sudo tar -zcvf $(date +"%d-%m-%Y").tar.gz backup.sql
