@@ -4,6 +4,6 @@ exec {'update_ULIMIT':
   path    => ['usr/bin/', '/bin'],
 }
 exec {'restart_nginx':
-  command => '/usr/sbin/service nginx restart',
+  command => 'service nginx restart',
   path    => ['/usr/sbin/', '/sbin', '/usr/bin'],
 }
