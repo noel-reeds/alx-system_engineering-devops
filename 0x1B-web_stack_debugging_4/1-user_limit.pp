@@ -1,10 +1,9 @@
 # adjusts OS configs for holberton user
-exec {'change_os_configuration_for_holberton_user':
-  provider => shell,
-  command  => 'sudo sed -i "/holberton hard/s/5/2048/" /etc/security/limits.conf',
-  before   => Exec['change_os_configuration_for_holberton_user2'],
+exec {'change-os-configs-for-holberton-user':
+  command  => 'sudo sed -i "/s/nofile 5/nofile 2048/" /etc/security/limits.conf',
+  path     => ['/usr/bin/', '/bin/'],
 }
-exec {'change_os_configuration_for_holberton_user2':
-  provider => shell,
-  command  => 'sudo sed -i "/holberton soft/s/4/2048/" /etc/security/limits.conf',
+exec {'change-os-configs-for-holberton-user2':
+  command  => 'sudo sed -i "/s/nofile 4/nofile 2048/" /etc/security/limits.conf',
+  path     => ['/usr/bin/', '/bin/'],
 }
